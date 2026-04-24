@@ -3,989 +3,1081 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artisan Living | Luxury Custom Home Builder</title>
-    <meta name="description" content="Artisan Living crafts timeless luxury homes with unparalleled attention to detail and architectural excellence.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Halal Wood Company | Premium Wooden Doors & Custom Carpentry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        wood: {
+                            50: '#fdf8f0',
+                            100: '#f9eddb',
+                            200: '#f0d5b0',
+                            300: '#e4b77c',
+                            400: '#d6964d',
+                            500: '#cc8033',
+                            600: '#c06a2b',
+                            700: '#9f5026',
+                            800: '#814225',
+                            900: '#693721',
+                        },
+                        navy: {
+                            800: '#1a2332',
+                            900: '#0f1923',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* Base styles */
-        :root {
-            --primary: #2c3e50;
-            --secondary: #34495e;
-            --accent: #d4af37;
-            --light: #f9f9f9;
-            --dark: #2c3e50;
-            --gray: #f5f5f5;
-            --text: #333;
-            --text-light: #777;
-            --white: #fff;
-            --transition: all 0.3s ease;
+        * { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; }
+
+        /* Hero Background */
+        .hero-bg {
+            background-image: url('assets/halal.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Marquee Infinite Scroll */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .section-light {
-            padding: 80px 0;
-            background-color: var(--light);
-        }
-
-        .section-gray {
-            padding: 80px 0;
-            background-color: var(--gray);
-        }
-
-        .section-dark {
-            padding: 80px 0;
-            background-color: var(--dark);
-            color: var(--white);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--accent);
-        }
-
-        .section-title p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background-color: var(--accent);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background-color: #c19b2c;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        /* Header & Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-
-        .navbar {
+        .marquee-track {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
+            animation: marquee 20s linear infinite;
+        }
+        .marquee-track:hover {
+            animation-play-state: paused;
         }
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            text-decoration: none;
-            color: var(--primary);
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            position: relative;
-            margin-left: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            transition: var(--transition);
-            padding: 8px 0;
-            display: block;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Dropdown Menu */
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: var(--white);
-            min-width: 220px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-radius: 4px;
+        /* Fade In Animation */
+        .fade-in {
             opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: var(--transition);
-            z-index: 100;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
         }
-
-        .dropdown-menu li {
-            margin: 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .dropdown-menu li:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-menu a {
-            padding: 12px 20px;
-            display: block;
-            color: var(--text);
-            transition: var(--transition);
-        }
-
-        .dropdown-menu a:hover {
-            background-color: #f9f9f9;
-            color: var(--accent);
-            padding-left: 25px;
-        }
-
-        .nav-links li:hover .dropdown-menu {
+        .fade-in.visible {
             opacity: 1;
-            visibility: visible;
             transform: translateY(0);
         }
 
-        .mobile-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            margin-top: 80px;
-        }
-
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.4));
-            z-index: -1;
-        }
-
-        .hero-content {
-            text-align: center;
-            color: var(--white);
-            z-index: 1;
-            max-width: 800px;
-            padding: 0 20px;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        /* About Preview Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-image {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: var(--transition);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        .service-image {
-            height: 220px;
-            overflow: hidden;
-        }
-
-        .service-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .service-card:hover .service-image img {
+        /* Product Card Hover */
+        .product-card:hover .product-img {
             transform: scale(1.05);
         }
-
-        .service-content {
-            padding: 25px;
+        .product-card:hover {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
-        .service-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+        /* Navbar Glass Effect */
+        .nav-glass {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
 
-        .service-content p {
-            color: var(--text-light);
-            margin-bottom: 15px;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a2332; }
+        ::-webkit-scrollbar-thumb { background: #cc8033; border-radius: 4px; }
+
+        /* Gradient Overlays */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(15, 25, 35, 0.85) 0%, rgba(15, 25, 35, 0.5) 50%, rgba(15, 25, 35, 0.7) 100%);
         }
 
-        /* Testimonials */
-        .testimonials-container {
-            position: relative;
-            overflow: hidden;
+        /* Why Choose Us Pattern */
+        .choose-pattern {
+            background-image: radial-gradient(circle at 20% 50%, rgba(204, 128, 51, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 20%, rgba(204, 128, 51, 0.08) 0%, transparent 50%),
+                              radial-gradient(circle at 40% 80%, rgba(204, 128, 51, 0.06) 0%, transparent 50%);
         }
 
-        .testimonial-slider {
-            overflow: hidden;
+        /* Button Hover Effects */
+        .btn-wood {
+            background: linear-gradient(135deg, #cc8033 0%, #9f5026 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-wood:hover {
+            background: linear-gradient(135deg, #d6964d 0%, #c06a2b 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -5px rgba(204, 128, 51, 0.4);
         }
 
-        .testimonial-track {
-            display: flex;
-            transition: transform 0.5s ease;
+        /* Service Card */
+        .service-card {
+            transition: all 0.4s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, #cc8033, #9f5026);
+            color: white;
         }
 
-        .testimonial-slide {
-            min-width: 100%;
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
         }
 
-        .testimonial-card {
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 8px;
-            padding: 40px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
+        /* Certificate Badge */
+        .cert-badge {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
-        .client-image {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 20px;
-        }
-
-        .client-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .testimonial-text {
-            font-size: 1.1rem;
-            font-style: italic;
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        .client-name {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
-        .client-role {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9rem;
-        }
-
-        .slider-nav {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(255,255,255,0.3);
-            margin: 0 5px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .slider-dot.active {
-            background-color: var(--accent);
-        }
-
-        /* Process Steps */
-        .process-steps {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-top: 50px;
-        }
-
-        .process-step {
-            flex: 1;
-            min-width: 200px;
-            text-align: center;
-            padding: 0 20px;
-            margin-bottom: 30px;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background-color: var(--accent);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin: 0 auto 20px;
-        }
-
-        .process-step h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 70px 0 20px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .footer-logo span {
-            color: var(--accent);
-        }
-
-        .footer-about p {
-            margin-bottom: 20px;
-            color: rgba(255,255,255,0.7);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            color: var(--white);
-            transition: var(--transition);
-        }
-
-        .social-link:hover {
-            background-color: var(--accent);
-            transform: translateY(-3px);
-        }
-
-        .footer-heading {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-heading::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
+        /* Section Divider */
+        .section-divider {
+            background: linear-gradient(90deg, transparent, #cc8033, transparent);
             height: 2px;
-            background-color: var(--accent);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-            padding-left: 5px;
-        }
-
-        .newsletter-form {
-            margin-top: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: none;
-            border-radius: 4px;
-            background-color: rgba(255,255,255,0.1);
-            color: var(--white);
-        }
-
-        .form-control::placeholder {
-            color: rgba(255,255,255,0.5);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.5);
-        }
-
-        /* Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.8s ease forwards;
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--white);
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                margin: 10px 0;
-            }
-
-            .mobile-toggle {
-                display: block;
-            }
-
-            .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                margin-left: 20px;
-                margin-top: 10px;
-                display: none;
-            }
-
-            .dropdown-menu.active {
-                display: block;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .process-steps {
-                flex-direction: column;
-            }
         }
     </style>
 </head>
-<body>
-    <!-- Header & Navigation -->
-    <header id="header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="index.html" class="logo">Artisan<span>Living</span></a>
-                <div class="mobile-toggle" id="mobileToggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li class="dropdown">
-                        <a href="services.html">Services <i class="fas fa-chevron-down" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="services.html#custom-homes">Custom Home Building</a></li>
-                            <li><a href="services.html#interior-architecture">Interior Architecture</a></li>
-                            <li><a href="services.html#estate-renovation">Estate Renovation</a></li>
-                            <li><a href="services.html#project-management">Project Management</a></li>
-                            <li><a href="services.html#design-consultation">Design Consultation</a></li>
-                            <li><a href="services.html#landscape-design">Landscape Design</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="testimonials.html">Testimonials</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<body class="bg-white text-gray-800 overflow-x-hidden">
 
-    <!-- Hero Section with Video Background -->
-    <section class="hero" id="home">
-        <!-- Video Background -->
-        <video class="hero-video" id="heroVideo" autoplay muted loop playsinline>
-            <source src="assets/videos.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="hero-overlay">
-            <div class="hero-content" id="heroContent">
-                <h1>Crafting Timeless Luxury Homes</h1>
-                <p>Where architectural vision meets unparalleled craftsmanship to create residences that transcend time and trends.</p>
-                <a href="contact.html" class="btn btn-primary">Begin Your Journey</a>
+    <!-- ==================== TOP BAR ==================== -->
+    <div class="bg-navy-900 text-white py-2 text-sm hidden md:block">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-6">
+                <span class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-wood-400" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a1 1 0 01-1.186-.148l-.934-.934a1 1 0 01-.148-1.186l.773-1.548a1 1 0 011.06-.54l4.435.74A1 1 0 0111 1.153V2a1 1 0 01-1-1H2zM2 3a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H2a1 1 0 01-1-1V3z"/></svg>
+                    📍 Kampala, Uganda
+                </span>
+                <span class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-wood-400" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a1 1 0 01-1.186-.148l-.934-.934a1 1 0 01-.148-1.186l.773-1.548a1 1 0 011.06-.54l4.435.74A1 1 0 0111 1.153V2a1 1 0 01-1-1H2zM2 3a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H2a1 1 0 01-1-1V3z"/></svg>
+                    📞 +256 782 773441
+                </span>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="text-wood-300">🏆 Fully Licensed & Certified</span>
+                <span class="text-gray-500">|</span>
+                <span>Mon - Sat: 8AM - 6PM</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav id="navbar" class="sticky top-0 z-50 transition-all duration-500 bg-white/95 nav-glass shadow-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 bg-gradient-to-br from-wood-500 to-wood-700 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-wood-400/30 transition-all duration-300">
+                        <span class="text-white text-2xl">🪵</span>
+                    </div>
+                    <div>
+                        <h1 class="font-playfair text-xl font-bold text-navy-900 leading-tight">Halal Wood</h1>
+                        <p class="text-[10px] text-wood-500 font-semibold tracking-widest uppercase">Company</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden lg:flex items-center gap-1">
+                    <a href="#home" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-wood-600 rounded-lg hover:bg-wood-50 transition-all duration-300">Home</a>
+                    <a href="#about" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-wood-600 rounded-lg hover:bg-wood-50 transition-all duration-300">About</a>
+                    <a href="#services" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-wood-600 rounded-lg hover:bg-wood-50 transition-all duration-300">Services</a>
+                    <a href="#products" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-wood-600 rounded-lg hover:bg-wood-50 transition-all duration-300">Products</a>
+                    <a href="#choose" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-wood-600 rounded-lg hover:bg-wood-50 transition-all duration-300">Why Us</a>
+                    <a href="#contact" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-wood-600 rounded-lg hover:bg-wood-50 transition-all duration-300">Contact</a>
+                </div>
+
+                <!-- Phone + CTA -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="tel:+256782773441" class="flex items-center gap-2 text-sm font-semibold text-navy-900 hover:text-wood-600 transition-colors">
+                        <svg class="w-4 h-4 text-wood-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a1 1 0 01-1.186-.148l-.934-.934a1 1 0 01-.148-1.186l.773-1.548a1 1 0 011.06-.54l4.435.74A1 1 0 0111 1.153V2a1 1 0 01-1-1H2z"/></svg>
+                        +256 782 773441
+                    </a>
+                    <a href="#contact" class="btn-wood text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow-lg shadow-wood-500/30">
+                        Get Your Door →
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="menuBtn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" onclick="toggleMenu()">
+                    <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 bg-navy-900/98 backdrop-blur-xl lg:hidden">
+        <div class="flex flex-col h-full p-8">
+            <div class="flex justify-between items-center mb-12">
+                <a href="#home" class="flex items-center gap-3" onclick="toggleMenu()">
+                    <div class="w-10 h-10 bg-gradient-to-br from-wood-500 to-wood-700 rounded-xl flex items-center justify-center">
+                        <span class="text-white text-xl">🪵</span>
+                    </div>
+                    <span class="font-playfair text-lg font-bold text-white">Halal Wood</span>
+                </a>
+                <button onclick="toggleMenu()" class="p-2 rounded-lg hover:bg-white/10">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="flex flex-col gap-2">
+                <a href="#home" class="text-white/80 hover:text-wood-400 text-lg font-medium py-3 border-b border-white/10 transition-colors" onclick="toggleMenu()">Home</a>
+                <a href="#about" class="text-white/80 hover:text-wood-400 text-lg font-medium py-3 border-b border-white/10 transition-colors" onclick="toggleMenu()">About</a>
+                <a href="#services" class="text-white/80 hover:text-wood-400 text-lg font-medium py-3 border-b border-white/10 transition-colors" onclick="toggleMenu()">Services</a>
+                <a href="#products" class="text-white/80 hover:text-wood-400 text-lg font-medium py-3 border-b border-white/10 transition-colors" onclick="toggleMenu()">Products</a>
+                <a href="#choose" class="text-white/80 hover:text-wood-400 text-lg font-medium py-3 border-b border-white/10 transition-colors" onclick="toggleMenu()">Why Us</a>
+                <a href="#contact" class="text-white/80 hover:text-wood-400 text-lg font-medium py-3 border-b border-white/10 transition-colors" onclick="toggleMenu()">Contact</a>
+            </div>
+            <div class="mt-auto space-y-4">
+                <a href="tel:+256782773441" class="flex items-center gap-3 text-white/80 text-lg">
+                    <svg class="w-5 h-5 text-wood-400" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a1 1 0 01-1.186-.148l-.934-.934a1 1 0 01-.148-1.186l.773-1.548a1 1 0 011.06-.54l4.435.74A1 1 0 0111 1.153V2a1 1 0 01-1-1H2z"/></svg>
+                    +256 782 773441
+                </a>
+                <a href="#contact" class="btn-wood text-white px-8 py-3 rounded-full text-center block font-semibold" onclick="toggleMenu()">
+                    Get Your Door →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="home" class="hero-bg relative min-h-screen flex items-center">
+        <div class="hero-overlay absolute inset-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-navy-900/90 via-navy-900/60 to-transparent"></div>
+
+        <!-- Decorative Elements -->
+        <div class="absolute top-20 right-10 w-72 h-72 bg-wood-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 left-10 w-96 h-96 bg-wood-400/5 rounded-full blur-3xl"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 py-32">
+            <div class="max-w-3xl">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 mb-8 fade-in">
+                    <span class="w-2 h-2 bg-wood-400 rounded-full animate-pulse"></span>
+                    <span class="text-white/90 text-sm font-medium">Uganda's Premium Wood Craftsmanship</span>
+                </div>
+
+                <!-- Heading -->
+                <h1 class="font-playfair text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] mb-6 fade-in">
+                    Premium
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-wood-300 to-wood-500"> Wooden Doors</span>
+                    <br>& Carpentry
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="text-lg md:text-xl text-white/70 max-w-2xl mb-10 leading-relaxed fade-in">
+                    Designing, fabricating, and installing elegant, durable wooden solutions for residential and commercial spaces across Uganda.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 fade-in">
+                    <a href="#contact" class="btn-wood text-white px-8 py-4 rounded-full text-lg font-semibold shadow-2xl shadow-wood-500/30 text-center inline-flex items-center justify-center gap-2">
+                        Get Your Door
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m0 0H3"/></svg>
+                    </a>
+                    <a href="#products" class="group bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/20 transition-all duration-300 text-center inline-flex items-center justify-center gap-2">
+                        View Products
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m0 0H3"/></svg>
+                    </a>
+                </div>
+
+                <!-- Stats -->
+                <div class="flex flex-wrap gap-8 mt-16 fade-in">
+                    <div class="text-center sm:text-left">
+                        <div class="font-playfair text-4xl font-bold text-wood-400">500+</div>
+                        <div class="text-white/50 text-sm mt-1">Doors Installed</div>
+                    </div>
+                    <div class="text-center sm:text-left">
+                        <div class="font-playfair text-4xl font-bold text-wood-400">10+</div>
+                        <div class="text-white/50 text-sm mt-1">Years Experience</div>
+                    </div>
+                    <div class="text-center sm:text-left">
+                        <div class="font-playfair text-4xl font-bold text-wood-400">100%</div>
+                        <div class="text-white/50 text-sm mt-1">Client Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-wood-400 rounded-full mt-2 animate-pulse"></div>
             </div>
         </div>
     </section>
 
-    <!-- About Preview Section -->
-    <section class="section-light">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text fade-in">
-                    <h2>Our Philosophy</h2>
-                    <p>At Artisan Living, we believe a home is more than just a structure—it's a reflection of your life, values, and aspirations. Founded in 2005 by visionary architect James Montgomery, our firm has dedicated itself to creating exceptional residences.</p>
-                    <p>Our approach combines time-honored craftsmanship with innovative design solutions, ensuring each home we build is both timeless and uniquely personal.</p>
-                    <a href="about.html" class="btn">Discover Our Story</a>
+    <!-- ==================== TRUST / CERTIFICATE MARQUEE ==================== -->
+    <section class="bg-gradient-to-r from-wood-50 via-white to-wood-50 py-12 border-y border-wood-200/50 overflow-hidden">
+        <div class="text-center mb-8">
+            <p class="text-wood-600 font-semibold text-sm uppercase tracking-widest">Trusted & Certified By</p>
+        </div>
+        <div class="relative overflow-hidden">
+            <div class="marquee-track">
+                <!-- First Set -->
+                <div class="flex items-center gap-12 px-6 flex-shrink-0">
+                    <div class="flex items-center gap-3 bg-white px-6 py-3 rounded-xl shadow-sm border border-gray-100">
+                        <span class="text-2xl">🏛️</span>
+                        <div><p class="font-semibold text-navy-900 text-sm">Uganda Revenue Authority</p><p class="text-xs text-gray-500">Licensed Business</p></div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white px-6 py-3 rounded-xl shadow-sm border border-gray-100">
+                        <span class="text-2xl">🏗️</span>
+                        <div><p class="font-semibold text-navy-900 text-sm">KCCA Approved</p><p class="text-xs text-gray-500">Building Standards</p></div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white px-6 py-3 rounded-xl shadow-sm border border-gray-100">
+                        <span class="text-2xl">✅</span>
+                        <div><p class="font-semibold text-navy-900 text-sm">ISO 9001 Certified</p><p class="text-xs text-gray-500">Quality Management</p></div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white px-6 py-3 rounded-xl shadow-sm border border-gray-100">
+                        <span class="text-2xl">🌿</span>
+                        <div><p class="font-semibold text-navy-900 text-sm">Eco-Friendly Timber</p><p class="text-xs text-gray-500">Sustainable Sourcing</p></div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white px-6 py-3 rounded-xl shadow-sm border border-gray-100">
+                        <span class="text-2xl">⭐</span>
+                        <div><p class="font-semibold text-navy-900 text-sm">5-Star Rated</p><p class="text-xs text-gray-500">Google Reviews</p></div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white px-6 py-3 rounded-xl shadow-sm border border-gray-100">
+                        <span class="text-2xl">🛡️</span>
+                        <div><p class="font-semibold text-navy-900 text-sm">Warranty Protected</p><p class="text-xs text-gray-500">5-Year Guarantee</p></div>
+                    </div>
                 </div>
-                <div class="about-image fade-in">
-                    <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Modern luxury architecture">
+                <!-- Duplicate Set for Seamless Loop -->
+                <div class="flex items-center gap-12 px-6 flex-shrink-0">
+                    <div class="flex items-center gap-3 bg-white px-6 py-3 rounded-xl shadow-sm border border-gray-100">
+                        <span class="text-2xl">🏛️</span>
+                        <div><p class="font-semibold text-navy-900 text-sm">Uganda Revenue Authority</p><p class="text-xs text-gray-500">Licensed Business</p></div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white px-6 py-3 rounded-xl shadow-sm border border-gray-100">
+                        <span class="text-2xl">🏗️</span>
+                        <div><p class="font-semibold text-navy-900 text-sm">KCCA Approved</p><p class="text-xs text-gray-500">Building Standards</p></div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white px-6 py-3 rounded-xl shadow-sm border border-gray-100">
+                        <span class="text-2xl">✅</span>
+                        <div><p class="font-semibold text-navy-900 text-sm">ISO 9001 Certified</p><p class="text-xs text-gray-500">Quality Management</p></div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white px-6 py-3 rounded-xl shadow-sm border border-gray-100">
+                        <span class="text-2xl">🌿</span>
+                        <div><p class="font-semibold text-navy-900 text-sm">Eco-Friendly Timber</p><p class="text-xs text-gray-500">Sustainable Sourcing</p></div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white px-6 py-3 rounded-xl shadow-sm border border-gray-100">
+                        <span class="text-2xl">⭐</span>
+                        <div><p class="font-semibold text-navy-900 text-sm">5-Star Rated</p><p class="text-xs text-gray-500">Google Reviews</p></div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white px-6 py-3 rounded-xl shadow-sm border border-gray-100">
+                        <span class="text-2xl">🛡️</span>
+                        <div><p class="font-semibold text-navy-900 text-sm">Warranty Protected</p><p class="text-xs text-gray-500">5-Year Guarantee</p></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Preview Section -->
-    <section class="section-gray">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Craft</h2>
-                <p>Explore our comprehensive range of luxury home building services</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1600585154340-ffff7ac6d66e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Custom Home Building">
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left: Content -->
+                <div class="fade-in">
+                    <div class="inline-flex items-center gap-2 bg-wood-50 rounded-full px-4 py-1.5 mb-6">
+                        <span class="w-2 h-2 bg-wood-500 rounded-full"></span>
+                        <span class="text-wood-600 text-sm font-semibold uppercase tracking-wider">About Us</span>
                     </div>
-                    <div class="service-content">
-                        <h3>Custom Home Building</h3>
-                        <p>From concept to completion, we design and build bespoke residences that reflect your unique lifestyle.</p>
-                    </div>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=80" alt="Interior Architecture">
-                    </div>
-                    <div class="service-content">
-                        <h3>Interior Architecture</h3>
-                        <p>Our team creates cohesive interior spaces that blend form and function with meticulous attention to detail.</p>
-                    </div>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Estate Renovation">
-                    </div>
-                    <div class="service-content">
-                        <h3>Estate Renovation</h3>
-                        <p>We specialize in transforming existing properties, preserving their character while introducing modern amenities.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center" style="text-align: center; margin-top: 3rem;">
-                <a href="services.html" class="btn">View All Services</a>
-            </div>
-        </div>
-    </section>
+                    <h2 class="font-playfair text-4xl md:text-5xl font-bold text-navy-900 mb-6 leading-tight">
+                        Crafting Excellence in
+                        <span class="text-wood-600">Every Grain</span>
+                    </h2>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                        Founded in Kampala, <strong>Halal Wood Company</strong> has grown to become one of Uganda's most trusted names in premium wooden craftsmanship. With over a decade of experience, we specialize in designing, fabricating, and installing high-quality wooden doors and custom carpentry solutions.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-8">
+                        Our journey began with a simple mission: to deliver world-class wooden products that combine beauty, durability, and precision. Today, we serve hundreds of satisfied clients across Uganda and surrounding regions, from luxury homes to commercial buildings.
+                    </p>
 
-    <!-- Testimonials Preview Section -->
-    <section class="section-dark">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Legacy</h2>
-                <p>Hear from our clients about their experience working with Artisan Living</p>
-            </div>
-            <div class="testimonials-container">
-                <div class="testimonial-slider">
-                    <div class="testimonial-track" id="testimonialTrack">
-                        <div class="testimonial-slide">
-                            <div class="testimonial-card">
-                                <div class="client-image">
-                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Robert Chen">
-                                </div>
-                                <p class="testimonial-text">Working with Artisan Living was an extraordinary experience. Their attention to detail and commitment to quality surpassed all our expectations. Our home is not just a building; it's a work of art that perfectly captures our family's spirit.</p>
-                                <h4 class="client-name">Robert Chen</h4>
-                                <p class="client-role">Hillside Estate, Beverly Hills</p>
+                    <!-- Licensed Badge -->
+                    <div class="flex items-center gap-4 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-5 mb-8">
+                        <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center text-3xl flex-shrink-0">
+                            ✅
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-green-800">Fully Licensed & Operated</h4>
+                            <p class="text-green-700 text-sm">Registered business with all required certifications and permits. Your trusted partner for quality woodwork in Uganda.</p>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="grid grid-cols-3 gap-6">
+                        <div class="text-center p-4 bg-wood-50 rounded-2xl">
+                            <div class="font-playfair text-3xl font-bold text-wood-600">500+</div>
+                            <div class="text-gray-600 text-sm mt-1">Projects Done</div>
+                        </div>
+                        <div class="text-center p-4 bg-wood-50 rounded-2xl">
+                            <div class="font-playfair text-3xl font-bold text-wood-600">10+</div>
+                            <div class="text-gray-600 text-sm mt-1">Years Active</div>
+                        </div>
+                        <div class="text-center p-4 bg-wood-50 rounded-2xl">
+                            <div class="font-playfair text-3xl font-bold text-wood-600">50+</div>
+                            <div class="text-gray-600 text-sm mt-1">Team Members</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Team Image -->
+                <div class="relative fade-in">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1601058268499-e5264a152980?w=800&q=80" alt="Halal Wood Company Team" class="w-full h-[600px] object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/20">
+                                <p class="text-white font-semibold text-lg">Our Workshop Team</p>
+                                <p class="text-white/70 text-sm">Skilled craftsmen dedicated to perfection</p>
                             </div>
                         </div>
-                        <div class="testimonial-slide">
-                            <div class="testimonial-card">
-                                <div class="client-image">
-                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Amanda Richardson">
-                                </div>
-                                <p class="testimonial-text">The team at Artisan Living transformed our vision into reality with incredible precision and creativity. Their ability to blend modern aesthetics with classic elements resulted in a home that feels both contemporary and timeless.</p>
-                                <h4 class="client-name">Amanda Richardson</h4>
-                                <p class="client-role">Oceanview Residence, Malibu</p>
-                            </div>
-                        </div>
-                        <div class="testimonial-slide">
-                            <div class="testimonial-card">
-                                <div class="client-image">
-                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Michael Thompson">
-                                </div>
-                                <p class="testimonial-text">Artisan Living delivered beyond our wildest dreams. Their professionalism, expertise, and dedication to excellence made the entire process seamless. We couldn't be happier with our new home.</p>
-                                <h4 class="client-name">Michael Thompson</h4>
-                                <p class="client-role">Mountain Retreat, Aspen</p>
-                            </div>
+                    </div>
+                    <!-- Floating Badge -->
+                    <div class="cert-badge absolute -top-4 -right-4 bg-gradient-to-br from-wood-500 to-wood-700 text-white rounded-2xl p-5 shadow-2xl shadow-wood-500/30">
+                        <div class="text-center">
+                            <div class="text-3xl mb-1">🏆</div>
+                            <div class="font-bold text-sm">Award Winning</div>
+                            <div class="text-white/70 text-xs">Quality Craftsmanship</div>
                         </div>
                     </div>
-                </div>
-                <div class="slider-nav" id="sliderNav">
-                    <!-- Dots will be added by JavaScript -->
-                </div>
-            </div>
-            <div class="text-center" style="text-align: center; margin-top: 3rem;">
-                <a href="testimonials.html" class="btn">Read More Testimonials</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="section-light">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Process</h2>
-                <p>A seamless journey from vision to reality</p>
-            </div>
-            <div class="process-steps">
-                <div class="process-step fade-in">
-                    <div class="step-number">01</div>
-                    <h3>Consultation & Vision</h3>
-                    <p>We begin by understanding your lifestyle, preferences, and vision to create a foundation for your dream home.</p>
-                </div>
-                <div class="process-step fade-in">
-                    <div class="step-number">02</div>
-                    <h3>Design & Planning</h3>
-                    <p>Our architects and designers transform your vision into detailed plans, ensuring every element reflects your style.</p>
-                </div>
-                <div class="process-step fade-in">
-                    <div class="step-number">03</div>
-                    <h3>Construction & Craftsmanship</h3>
-                    <p>Our skilled craftsmen bring the designs to life with meticulous attention to detail and quality materials.</p>
-                </div>
-                <div class="process-step fade-in">
-                    <div class="step-number">04</div>
-                    <h3>Final Delivery</h3>
-                    <p>We hand over your completed home, ensuring every detail meets our highest standards of excellence.</p>
+                    <!-- Decorative Element -->
+                    <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-wood-100 rounded-3xl -z-10"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="section-dark">
-        <div class="container">
-            <div class="section-title">
-                <h2>Ready to Begin Your Journey?</h2>
-                <p>Contact us today to discuss your vision and start the process of creating your dream home</p>
+    <!-- ==================== SERVICES SECTION ==================== -->
+    <section id="services" class="py-24 bg-gradient-to-b from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <div class="inline-flex items-center gap-2 bg-wood-50 rounded-full px-4 py-1.5 mb-6">
+                    <span class="w-2 h-2 bg-wood-500 rounded-full"></span>
+                    <span class="text-wood-600 text-sm font-semibold uppercase tracking-wider">Our Services</span>
+                </div>
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-navy-900 mb-6">
+                    Expert Woodwork <span class="text-wood-600">Services</span>
+                </h2>
+                <p class="text-gray-600 text-lg">From design to installation, we provide comprehensive wooden solutions tailored to your exact requirements.</p>
             </div>
-            <div class="text-center" style="text-align: center;">
-                <a href="contact.html" class="btn btn-primary">Schedule a Consultation</a>
+
+            <!-- Services Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Service 1 -->
+                <div class="service-card bg-white rounded-3xl p-8 shadow-sm border border-gray-100 fade-in group">
+                    <div class="service-icon w-16 h-16 bg-wood-50 rounded-2xl flex items-center justify-center text-3xl mb-6 transition-all duration-300">
+                        🚪
+                    </div>
+                    <h3 class="font-playfair text-xl font-bold text-navy-900 mb-3">Premium Pivot Doors</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">Modern, bold entrance solutions with smooth pivot engineering and luxury finishes for grand statements.</p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-wood-600 font-semibold text-sm group-hover:gap-3 transition-all">
+                        Get Quote
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m0 0H3"/></svg>
+                    </a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card bg-white rounded-3xl p-8 shadow-sm border border-gray-100 fade-in group">
+                    <div class="service-icon w-16 h-16 bg-wood-50 rounded-2xl flex items-center justify-center text-3xl mb-6 transition-all duration-300">
+                        🏠
+                    </div>
+                    <h3 class="font-playfair text-xl font-bold text-navy-900 mb-3">Grand Main Doors</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">Strong, secure, and beautifully designed statement doors for premium residential and commercial entrances.</p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-wood-600 font-semibold text-sm group-hover:gap-3 transition-all">
+                        Get Quote
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m0 0H3"/></svg>
+                    </a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card bg-white rounded-3xl p-8 shadow-sm border border-gray-100 fade-in group">
+                    <div class="service-icon w-16 h-16 bg-wood-50 rounded-2xl flex items-center justify-center text-3xl mb-6 transition-all duration-300">
+                        🪵
+                    </div>
+                    <h3 class="font-playfair text-xl font-bold text-navy-900 mb-3">Solid Hardwood Frames</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">Durable structural framing built for long-lasting strength, precision fit, and superior load-bearing capacity.</p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-wood-600 font-semibold text-sm group-hover:gap-3 transition-all">
+                        Get Quote
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m0 0H3"/></svg>
+                    </a>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card bg-white rounded-3xl p-8 shadow-sm border border-gray-100 fade-in group">
+                    <div class="service-icon w-16 h-16 bg-wood-50 rounded-2xl flex items-center justify-center text-3xl mb-6 transition-all duration-300">
+                        ✨
+                    </div>
+                    <h3 class="font-playfair text-xl font-bold text-navy-900 mb-3">Custom Architraves</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">Finely crafted detailing that enhances interior elegance and creates seamless design flow throughout your space.</p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-wood-600 font-semibold text-sm group-hover:gap-3 transition-all">
+                        Get Quote
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m0 0H3"/></svg>
+                    </a>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card bg-white rounded-3xl p-8 shadow-sm border border-gray-100 fade-in group">
+                    <div class="service-icon w-16 h-16 bg-wood-50 rounded-2xl flex items-center justify-center text-3xl mb-6 transition-all duration-300">
+                        🌳
+                    </div>
+                    <h3 class="font-playfair text-xl font-bold text-navy-900 mb-3">Teak & Mahogany Doors</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">Naturally strong, weather-resistant, and timeless wooden door solutions crafted from premium hardwood species.</p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-wood-600 font-semibold text-sm group-hover:gap-3 transition-all">
+                        Get Quote
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m0 0H3"/></svg>
+                    </a>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card bg-white rounded-3xl p-8 shadow-sm border border-gray-100 fade-in group">
+                    <div class="service-icon w-16 h-16 bg-wood-50 rounded-2xl flex items-center justify-center text-3xl mb-6 transition-all duration-300">
+                        🏢
+                    </div>
+                    <h3 class="font-playfair text-xl font-bold text-navy-900 mb-3">Interior & Exterior Solutions</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">Custom fabrication for homes, offices, villas, and commercial buildings — complete wood solutions from start to finish.</p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-wood-600 font-semibold text-sm group-hover:gap-3 transition-all">
+                        Get Quote
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m0 0H3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- See All Services Button -->
+            <div class="text-center fade-in">
+                <a href="#contact" class="inline-flex items-center gap-3 bg-navy-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-navy-800 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1">
+                    See All Services
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m0 0H3"/></svg>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <div class="footer-logo">Artisan<span>Living</span></div>
-                    <p>Crafting exceptional custom homes that stand as testaments to architectural excellence and timeless design.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+    <!-- ==================== PRODUCTS SECTION ==================== -->
+    <section id="products" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <div class="inline-flex items-center gap-2 bg-wood-50 rounded-full px-4 py-1.5 mb-6">
+                    <span class="w-2 h-2 bg-wood-500 rounded-full"></span>
+                    <span class="text-wood-600 text-sm font-semibold uppercase tracking-wider">Our Products</span>
+                </div>
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-navy-900 mb-6">
+                    Premium Wood <span class="text-wood-600">Collection</span>
+                </h2>
+                <p class="text-gray-600 text-lg">Discover our handcrafted wooden products, each built with precision, quality timber, and lasting durability.</p>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 fade-in group">
+                    <div class="relative overflow-hidden h-72">
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80" alt="Premium Pivot Door" class="product-img w-full h-full object-cover transition-transform duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-wood-500 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Best Seller</span>
+                        </div>
+                    </div>
+                    <div class="p-7">
+                        <h3 class="font-playfair text-xl font-bold text-navy-900 mb-2">Premium Pivot Door</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Modern pivot-engineered entrance door with luxury finishes. Smooth operation with bold, contemporary design.</p>
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full font-medium">In Stock</span>
+                            <span class="text-xs bg-wood-50 text-wood-700 px-3 py-1 rounded-full font-medium">Custom Sizes</span>
+                        </div>
+                        <a href="https://wa.me/256782773441?text=Hi!%20I'm%20interested%20in%20the%20Premium%20Pivot%20Door" class="btn-wood text-white px-6 py-3 rounded-full text-sm font-semibold w-full text-center inline-flex items-center justify-center gap-2 shadow-lg shadow-wood-500/20">
+                            Get It Now
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.319 0-4.478-.724-6.25-1.956l-.438-.313-2.637.885.885-2.637-.313-.438A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                        </a>
                     </div>
                 </div>
-                <div class="footer-links-container">
-                    <h4 class="footer-heading">Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="testimonials.html">Testimonials</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links-container">
-                    <h4 class="footer-heading">Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="services.html#custom-homes">Custom Home Building</a></li>
-                        <li><a href="services.html#interior-architecture">Interior Architecture</a></li>
-                        <li><a href="services.html#estate-renovation">Estate Renovation</a></li>
-                        <li><a href="services.html#project-management">Project Management</a></li>
-                        <li><a href="services.html#design-consultation">Design Consultation</a></li>
-                    </ul>
-                </div>
-                <div class="footer-newsletter">
-                    <h4 class="footer-heading">Newsletter</h4>
-                    <p>Subscribe to receive updates on our latest projects and design insights.</p>
-                    <form class="newsletter-form">
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
+
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 fade-in group">
+                    <div class="relative overflow-hidden h-72">
+                        <img src="https://images.unsplash.com/photo-1506759951713-45bb4a15998c?w=600&q=80" alt="Grand Main Door" class="product-img w-full h-full object-cover transition-transform duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-navy-900 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Premium</span>
                         </div>
-                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </div>
+                    <div class="p-7">
+                        <h3 class="font-playfair text-xl font-bold text-navy-900 mb-2">Grand Main Door</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Strong, secure statement door for premium entrances. Features reinforced construction with elegant detailing.</p>
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full font-medium">In Stock</span>
+                            <span class="text-xs bg-wood-50 text-wood-700 px-3 py-1 rounded-full font-medium">Teak / Mahogany</span>
+                        </div>
+                        <a href="https://wa.me/256782773441?text=Hi!%20I'm%20interested%20in%20the%20Grand%20Main%20Door" class="btn-wood text-white px-6 py-3 rounded-full text-sm font-semibold w-full text-center inline-flex items-center justify-center gap-2 shadow-lg shadow-wood-500/20">
+                            Get It Now
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.319 0-4.478-.724-6.25-1.956l-.438-.313-2.637.885.885-2.637-.313-.438A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 fade-in group">
+                    <div class="relative overflow-hidden h-72">
+                        <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?w=600&q=80" alt="Teak & Mahogany Door" class="product-img w-full h-full object-cover transition-transform duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Popular</span>
+                        </div>
+                    </div>
+                    <div class="p-7">
+                        <h3 class="font-playfair text-xl font-bold text-navy-900 mb-2">Teak & Mahogany Door</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Naturally strong, weather-resistant doors crafted from premium teak and mahogany. Timeless elegance guaranteed.</p>
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full font-medium">In Stock</span>
+                            <span class="text-xs bg-wood-50 text-wood-700 px-3 py-1 rounded-full font-medium">Weather Resistant</span>
+                        </div>
+                        <a href="https://wa.me/256782773441?text=Hi!%20I'm%20interested%20in%20the%20Teak%20%26%20Mahogany%20Door" class="btn-wood text-white px-6 py-3 rounded-full text-sm font-semibold w-full text-center inline-flex items-center justify-center gap-2 shadow-lg shadow-wood-500/20">
+                            Get It Now
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.319 0-4.478-.724-6.25-1.956l-.438-.313-2.637.885.885-2.637-.313-.438A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 fade-in group">
+                    <div class="relative overflow-hidden h-72">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80" alt="Solid Hardwood Frame" class="product-img w-full h-full object-cover transition-transform duration-700">
+                    </div>
+                    <div class="p-7">
+                        <h3 class="font-playfair text-xl font-bold text-navy-900 mb-2">Solid Hardwood Frames</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Durable structural framing built for long-lasting strength and precision fit. Perfect for any construction project.</p>
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full font-medium">Made to Order</span>
+                            <span class="text-xs bg-wood-50 text-wood-700 px-3 py-1 rounded-full font-medium">Precision Cut</span>
+                        </div>
+                        <a href="https://wa.me/256782773441?text=Hi!%20I'm%20interested%20in%20Solid%20Hardwood%20Frames" class="btn-wood text-white px-6 py-3 rounded-full text-sm font-semibold w-full text-center inline-flex items-center justify-center gap-2 shadow-lg shadow-wood-500/20">
+                            Get It Now
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.319 0-4.478-.724-6.25-1.956l-.438-.313-2.637.885.885-2.637-.313-.438A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 fade-in group">
+                    <div class="relative overflow-hidden h-72">
+                        <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=600&q=80" alt="Custom Architraves" class="product-img w-full h-full object-cover transition-transform duration-700">
+                    </div>
+                    <div class="p-7">
+                        <h3 class="font-playfair text-xl font-bold text-navy-900 mb-2">Custom Architraves</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Finely crafted decorative trim that enhances interior elegance and creates seamless design flow in every room.</p>
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full font-medium">Custom Design</span>
+                            <span class="text-xs bg-wood-50 text-wood-700 px-3 py-1 rounded-full font-medium">Any Style</span>
+                        </div>
+                        <a href="https://wa.me/256782773441?text=Hi!%20I'm%20interested%20in%20Custom%20Architraves" class="btn-wood text-white px-6 py-3 rounded-full text-sm font-semibold w-full text-center inline-flex items-center justify-center gap-2 shadow-lg shadow-wood-500/20">
+                            Get It Now
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.319 0-4.478-.724-6.25-1.956l-.438-.313-2.637.885.885-2.637-.313-.438A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 fade-in group">
+                    <div class="relative overflow-hidden h-72">
+                        <img src="https://images.unsplash.com/photo-1600566753086-00f18f49d429?w=600&q=80" alt="Interior & Exterior Wood Solutions" class="product-img w-full h-full object-cover transition-transform duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-blue-500 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Custom</span>
+                        </div>
+                    </div>
+                    <div class="p-7">
+                        <h3 class="font-playfair text-xl font-bold text-navy-900 mb-2">Interior & Exterior Solutions</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Complete custom fabrication for homes, offices, villas, and commercial buildings. Tailored to your exact specifications.</p>
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full font-medium">Full Service</span>
+                            <span class="text-xs bg-wood-50 text-wood-700 px-3 py-1 rounded-full font-medium">Design + Install</span>
+                        </div>
+                        <a href="https://wa.me/256782773441?text=Hi!%20I'm%20interested%20in%20Interior%20%26%20Exterior%20Wood%20Solutions" class="btn-wood text-white px-6 py-3 rounded-full text-sm font-semibold w-full text-center inline-flex items-center justify-center gap-2 shadow-lg shadow-wood-500/20">
+                            Get It Now
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.319 0-4.478-.724-6.25-1.956l-.438-.313-2.637.885.885-2.637-.313-.438A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- See All Products Button -->
+            <div class="text-center fade-in">
+                <a href="#contact" class="inline-flex items-center gap-3 bg-navy-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-navy-800 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1">
+                    See All Products
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m0 0H3"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== WHY CHOOSE US SECTION ==================== -->
+    <section id="choose" class="py-24 bg-gradient-to-br from-navy-900 via-[#1a2332] to-navy-800 relative overflow-hidden choose-pattern">
+        <!-- Decorative Elements -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-wood-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-wood-400/5 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-4 py-1.5 mb-6">
+                    <span class="w-2 h-2 bg-wood-400 rounded-full"></span>
+                    <span class="text-wood-300 text-sm font-semibold uppercase tracking-wider">Why Choose Us</span>
+                </div>
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-white mb-6">
+                    Why Clients Trust
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-wood-300 to-wood-500"> Halal Wood</span>
+                </h2>
+                <p class="text-white/60 text-lg">We don't just build doors — we craft experiences. Here's what sets us apart from the rest.</p>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Feature 1 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 group fade-in">
+                    <div class="w-14 h-14 bg-gradient-to-br from-wood-400 to-wood-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        🎯
+                    </div>
+                    <h3 class="font-playfair text-xl font-bold text-white mb-3">Precision Woodworking</h3>
+                    <p class="text-white/60 leading-relaxed">Every cut, joint, and finish is executed with millimeter precision using state-of-the-art tools and techniques.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 group fade-in">
+                    <div class="w-14 h-14 bg-gradient-to-br from-wood-400 to-wood-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        🌳
+                    </div>
+                    <h3 class="font-playfair text-xl font-bold text-white mb-3">Premium Solid Timber</h3>
+                    <p class="text-white/60 leading-relaxed">We source only the finest Teak, Mahogany, and Hardwood — naturally strong, durable, and beautiful materials.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 group fade-in">
+                    <div class="w-14 h-14 bg-gradient-to-br from-wood-400 to-wood-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        📐
+                    </div>
+                    <h3 class="font-playfair text-xl font-bold text-white mb-3">Custom Designs</h3>
+                    <p class="text-white/60 leading-relaxed">Every product is tailored to your exact specifications, measurements, and aesthetic preferences for a perfect fit.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 group fade-in">
+                    <div class="w-14 h-14 bg-gradient-to-br from-wood-400 to-wood-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        🔧
+                    </div>
+                    <h3 class="font-playfair text-xl font-bold text-white mb-3">Professional Installation</h3>
+                    <p class="text-white/60 leading-relaxed">Our expert installation team ensures flawless fitting, clean finishes, and proper functionality every single time.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 group fade-in">
+                    <div class="w-14 h-14 bg-gradient-to-br from-wood-400 to-wood-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        🛡️
+                    </div>
+                    <h3 class="font-playfair text-xl font-bold text-white mb-3">Long-Lasting Durability</h3>
+                    <p class="text-white/60 leading-relaxed">Built to withstand Uganda's climate with premium finishes that protect against weather, wear, and time.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 group fade-in">
+                    <div class="w-14 h-14 bg-gradient-to-br from-wood-400 to-wood-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        💰
+                    </div>
+                    <h3 class="font-playfair text-xl font-bold text-white mb-3">Fair & Transparent Pricing</h3>
+                    <p class="text-white/60 leading-relaxed">No hidden costs. We provide detailed quotes upfront so you know exactly what you're investing in.</p>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center fade-in">
+                <div class="bg-gradient-to-r from-wood-500/20 to-wood-600/20 border border-wood-500/30 rounded-3xl p-10 max-w-2xl mx-auto">
+                    <h3 class="font-playfair text-2xl font-bold text-white mb-4">Ready to Transform Your Space?</h3>
+                    <p class="text-white/70 mb-8">Get a free consultation and quote today. Our team is ready to bring your vision to life.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="https://wa.me/256782773441?text=Hi!%20I'd%20like%20a%20free%20consultation%20for%20my%20wood%20project" class="btn-wood text-white px-8 py-4 rounded-full font-semibold shadow-2xl shadow-wood-500/30 inline-flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.319 0-4.478-.724-6.25-1.956l-.438-.313-2.637.885.885-2.637-.313-.438A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                            WhatsApp Us
+                        </a>
+                        <a href="tel:+256782773441" class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full font-semibold hover:bg-white/20 transition-all duration-300 inline-flex items-center justify-center gap-2">
+                            📞 Call Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section id="contact" class="py-24 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <div class="inline-flex items-center gap-2 bg-wood-50 rounded-full px-4 py-1.5 mb-6">
+                    <span class="w-2 h-2 bg-wood-500 rounded-full"></span>
+                    <span class="text-wood-600 text-sm font-semibold uppercase tracking-wider">Contact Us</span>
+                </div>
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-navy-900 mb-6">
+                    Let's Build Your <span class="text-wood-600">Dream Door</span>
+                </h2>
+                <p class="text-gray-600 text-lg">Reach out today for a free consultation and quote. We're ready to bring your vision to life.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div class="space-y-8 fade-in">
+                    <!-- Phone -->
+                    <div class="flex items-start gap-5 bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <div class="w-14 h-14 bg-gradient-to-br from-wood-400 to-wood-600 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0">
+                            📞
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navy-900 text-lg">Phone / WhatsApp</h4>
+                            <a href="tel:+256782773441" class="text-wood-600 font-semibold text-lg hover:text-wood-700 transition-colors">+256 782 773441</a>
+                            <p class="text-gray-500 text-sm mt-1">Available Mon-Sat, 8AM-6PM</p>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="flex items-start gap-5 bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <div class="w-14 h-14 bg-gradient-to-br from-wood-400 to-wood-600 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0">
+                            📍
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navy-900 text-lg">Our Location</h4>
+                            <p class="text-gray-700 font-medium">Kampala, Uganda</p>
+                            <p class="text-gray-500 text-sm mt-1">Serving Uganda and surrounding regions</p>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="flex items-start gap-5 bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <div class="w-14 h-14 bg-gradient-to-br from-wood-400 to-wood-600 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0">
+                            ✉️
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navy-900 text-lg">Email Us</h4>
+                            <a href="mailto:info@halalwood.com" class="text-wood-600 font-semibold hover:text-wood-700 transition-colors">info@halalwood.com</a>
+                            <p class="text-gray-500 text-sm mt-1">We respond within 24 hours</p>
+                        </div>
+                    </div>
+
+                    <!-- Quick WhatsApp CTA -->
+                    <a href="https://wa.me/256782773441?text=Hi!%20I'd%20like%20to%20inquire%20about%20your%20wooden%20products." class="flex items-center gap-4 bg-green-500 hover:bg-green-600 text-white rounded-2xl p-6 transition-all duration-300 shadow-lg shadow-green-500/20 hover:shadow-xl hover:shadow-green-500/30 hover:-translate-y-1">
+                        <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0">
+                            💬
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg">Chat on WhatsApp</h4>
+                            <p class="text-white/80">Get instant response — Click to start conversation</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-gray-100 fade-in">
+                    <h3 class="font-playfair text-2xl font-bold text-navy-900 mb-2">Send Us a Message</h3>
+                    <p class="text-gray-500 mb-8">Fill out the form and we'll get back to you shortly.</p>
+
+                    <form class="space-y-5" onsubmit="handleSubmit(event)">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                            <input type="text" placeholder="Your full name" class="w-full px-5 py-3.5 rounded-xl border border-gray-200 focus:border-wood-400 focus:ring-4 focus:ring-wood-100 outline-none transition-all text-gray-700" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" placeholder="+256 XXX XXX XXX" class="w-full px-5 py-3.5 rounded-xl border border-gray-200 focus:border-wood-400 focus:ring-4 focus:ring-wood-100 outline-none transition-all text-gray-700" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">What are you looking for?</label>
+                            <select class="w-full px-5 py-3.5 rounded-xl border border-gray-200 focus:border-wood-400 focus:ring-4 focus:ring-wood-100 outline-none transition-all text-gray-700 bg-white" required>
+                                <option value="">Select a service/product</option>
+                                <option>Premium Pivot Doors</option>
+                                <option>Grand Main Doors</option>
+                                <option>Solid Hardwood Frames</option>
+                                <option>Custom Architraves</option>
+                                <option>Teak & Mahogany Doors</option>
+                                <option>Interior & Exterior Solutions</option>
+                                <option>Other Custom Project</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Message</label>
+                            <textarea rows="4" placeholder="Tell us about your project..." class="w-full px-5 py-3.5 rounded-xl border border-gray-200 focus:border-wood-400 focus:ring-4 focus:ring-wood-100 outline-none transition-all text-gray-700 resize-none" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-wood text-white px-8 py-4 rounded-full font-semibold w-full text-lg shadow-xl shadow-wood-500/20 flex items-center justify-center gap-2">
+                            Send Message
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                        </button>
                     </form>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Artisan Living. All Rights Reserved.</p>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-navy-900 text-white">
+        <!-- Main Footer -->
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <!-- Brand -->
+                <div class="lg:col-span-1">
+                    <a href="#home" class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-wood-500 to-wood-700 rounded-xl flex items-center justify-center shadow-lg">
+                            <span class="text-white text-2xl">🪵</span>
+                        </div>
+                        <div>
+                            <h3 class="font-playfair text-xl font-bold">Halal Wood</h3>
+                            <p class="text-[10px] text-wood-400 font-semibold tracking-widest uppercase">Company</p>
+                        </div>
+                    </a>
+                    <p class="text-white/60 leading-relaxed mb-6">Premium wooden doors and custom carpentry solutions. Design, fabricate, and install — all under one roof.</p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-wood-500 transition-colors">
+                            <span class="text-lg">📘</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-wood-500 transition-colors">
+                            <span class="text-lg">📸</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-wood-500 transition-colors">
+                            <span class="text-lg">🐦</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-white/60 hover:text-wood-400 transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-wood-500 rounded-full"></span>Home</a></li>
+                        <li><a href="#about" class="text-white/60 hover:text-wood-400 transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-wood-500 rounded-full"></span>About Us</a></li>
+                        <li><a href="#services" class="text-white/60 hover:text-wood-400 transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-wood-500 rounded-full"></span>Services</a></li>
+                        <li><a href="#products" class="text-white/60 hover:text-wood-400 transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-wood-500 rounded-full"></span>Products</a></li>
+                        <li><a href="#contact" class="text-white/60 hover:text-wood-400 transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-wood-500 rounded-full"></span>Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Products -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Our Products</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#products" class="text-white/60 hover:text-wood-400 transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-wood-500 rounded-full"></span>Pivot Doors</a></li>
+                        <li><a href="#products" class="text-white/60 hover:text-wood-400 transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-wood-500 rounded-full"></span>Grand Main Doors</a></li>
+                        <li><a href="#products" class="text-white/60 hover:text-wood-400 transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-wood-500 rounded-full"></span>Hardwood Frames</a></li>
+                        <li><a href="#products" class="text-white/60 hover:text-wood-400 transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-wood-500 rounded-full"></span>Custom Architraves</a></li>
+                        <li><a href="#products" class="text-white/60 hover:text-wood-400 transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-wood-500 rounded-full"></span>Teak & Mahogany</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Contact Info</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-wood-400 mt-0.5">📍</span>
+                            <span class="text-white/60">Kampala, Uganda<br>Serving Uganda & Surrounding Regions</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-wood-400">📞</span>
+                            <a href="tel:+256782773441" class="text-white/60 hover:text-wood-400 transition-colors">+256 782 773441</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-wood-400">✉️</span>
+                            <a href="mailto:info@halalwood.com" class="text-white/60 hover:text-wood-400 transition-colors">info@halalwood.com</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-wood-400">🕐</span>
+                            <span class="text-white/60">Mon - Sat: 8AM - 6PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-white/40 text-sm">© 2026 Halal Wood Company. All rights reserved.</p>
+                <p class="text-white/40 text-sm">Design • Fabricate • Install</p>
             </div>
         </div>
     </footer>
 
+    <!-- ==================== FLOATING WHATSAPP BUTTON ==================== -->
+    <a href="https://wa.me/256782773441?text=Hi!%20I'm%20interested%20in%20your%20wooden%20products." class="fixed bottom-6 right-6 z-50 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-2xl shadow-green-500/40 hover:bg-green-600 hover:scale-110 transition-all duration-300 animate-bounce" title="Chat on WhatsApp">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
     <script>
-        // Mobile menu toggle
-        document.getElementById('mobileToggle').addEventListener('click', function() {
-            document.getElementById('navLinks').classList.toggle('active');
-        });
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('open');
+            document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+        }
 
-        // Mobile dropdown toggle
-        const dropdownItems = document.querySelectorAll('.dropdown');
-        
-        dropdownItems.forEach(item => {
-            const link = item.querySelector('a');
-            
-            link.addEventListener('click', function(e) {
-                if (window.innerWidth <= 992) {
-                    e.preventDefault();
-                    const dropdownMenu = item.querySelector('.dropdown-menu');
-                    dropdownMenu.classList.toggle('active');
-                }
-            });
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.navbar') && window.innerWidth <= 992) {
-                document.getElementById('navLinks').classList.remove('active');
-                
-                const dropdownMenus = document.querySelectorAll('.dropdown-menu');
-                dropdownMenus.forEach(menu => {
-                    menu.classList.remove('active');
-                });
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('shadow-lg', 'bg-white/98');
+                navbar.classList.remove('bg-white/95');
+            } else {
+                navbar.classList.remove('shadow-lg', 'bg-white/98');
+                navbar.classList.add('bg-white/95');
             }
         });
 
-        // Testimonial slider
-        const track = document.getElementById('testimonialTrack');
-        const slides = document.querySelectorAll('.testimonial-slide');
-        const nav = document.getElementById('sliderNav');
-        let currentSlide = 0;
-        
-        // Create navigation dots
-        slides.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.classList.add('slider-dot');
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => {
-                goToSlide(index);
-            });
-            nav.appendChild(dot);
-        });
-        
-        function goToSlide(slideIndex) {
-            track.style.transform = `translateX(-${slideIndex * 100}%)`;
-            currentSlide = slideIndex;
-            
-            // Update active dot
-            document.querySelectorAll('.slider-dot').forEach((dot, index) => {
-                dot.classList.toggle('active', index === slideIndex);
-            });
-        }
-        
-        // Auto-advance slides
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % slides.length;
-            goToSlide(currentSlide);
-        }, 5000);
-
-        // Fade in animation on scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        const fadeInOnScroll = function() {
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('active');
+        // Fade In on Scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
             });
-        };
-        
-        window.addEventListener('scroll', fadeInOnScroll);
-        // Initial check
-        fadeInOnScroll();
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Form Handler
+        function handleSubmit(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const name = e.target.querySelector('input[type="text"]').value;
+            const phone = e.target.querySelector('input[type="tel"]').value;
+            const service = e.target.querySelector('select').value;
+            const message = e.target.querySelector('textarea').value;
+
+            const whatsappMsg = `Hi! I'm ${name}.%0A📞 ${phone}%0A🔧 ${service}%0A💬 ${message}`;
+            window.open(`https://wa.me/256782773441?text=${whatsappMsg}`, '_blank');
+
+            e.target.reset();
+            alert('Thank you! We\'ll redirect you to WhatsApp to complete your inquiry.');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
     </script>
 </body>
 </html>
